@@ -7,8 +7,7 @@ import {
 } from "@prismicio/react";
 
 import { Bounded, ButtonLink, Heading } from "@/components";
-import { TallLogo } from "./TallLogo";
-import { WideLogo } from "./WideLogo";
+import { TallLogo, WideLogo } from "./components";
 
 /**
  * Props for `Hero`.

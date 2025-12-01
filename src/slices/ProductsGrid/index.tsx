@@ -7,7 +7,7 @@ import {
 } from "@prismicio/react";
 
 import { Bounded, Heading } from "../../components";
-import { SkateProduct } from "./SkateProduct";
+import { SkateProduct } from "./components";
 
 /**
  * Props for `ProductsGrid`.

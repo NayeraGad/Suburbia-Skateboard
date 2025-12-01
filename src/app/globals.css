@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .product-grid-lines {
+        @apply text-stone-300 stroke-2 transition-colors group-hover:text-stone-400
+    }
+}
+
 @layer components {
     .bg-texture {
         @apply bg-[url('/bg-texture.webp')] bg-[length:720px_460px] bg-center bg-repeat;
@@ -54,5 +60,13 @@
 
     .hero-logo {
         @apply w-full text-brand-purple opacity-20 mix-blend-multiply;
+    }
+
+    .product-grid-vertical-lines {
+        @apply product-grid-lines absolute top-0 h-full;
+    }
+
+    .product-grid-horizontal-lines {
+        @apply product-grid-lines -mx-8;
     }
 }
