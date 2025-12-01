@@ -69,4 +69,8 @@
     .product-grid-horizontal-lines {
         @apply product-grid-lines -mx-8;
     }
+
+    .parallax-images {
+        @apply col-start-1 row-start-1 transition-transform
+    }
 }

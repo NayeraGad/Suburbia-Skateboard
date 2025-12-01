@@ -69,7 +69,7 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type HomeDocumentDataSlicesSlice = ProductsGridSlice | HeroSlice;
+type HomeDocumentDataSlicesSlice = SlideSlice | ProductsGridSlice | HeroSlice;
 
 /**
  * Content for Home documents
@@ -437,6 +437,176 @@ export type ProductsGridSlice = prismic.SharedSlice<
   ProductsGridSliceVariation
 >;
 
+/**
+ * Primary content in *Slide → Default → Primary*
+ */
+export interface SlideSliceDefaultPrimary {
+  /**
+   * Theme field in *Slide → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slide.default.primary.theme
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  theme: prismic.SelectField<"Blue" | "Orange" | "Navy" | "Lime">;
+
+  /**
+   * Heading field in *Slide → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slide.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Body field in *Slide → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slide.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *Slide → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slide.default.primary.button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Background Image field in *Slide → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slide.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Foreground Image field in *Slide → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slide.default.primary.foreground_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  foreground_image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Slide Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SlideSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SlideSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *Slide → Image on Left → Primary*
+ */
+export interface SlideSliceImageOnLeftPrimary {
+  /**
+   * Theme field in *Slide → Image on Left → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slide.imageOnLeft.primary.theme
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  theme: prismic.SelectField<"Blue" | "Orange" | "Navy" | "Lime">;
+
+  /**
+   * Heading field in *Slide → Image on Left → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slide.imageOnLeft.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Body field in *Slide → Image on Left → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slide.imageOnLeft.primary.body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *Slide → Image on Left → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slide.imageOnLeft.primary.button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Background Image field in *Slide → Image on Left → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slide.imageOnLeft.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Foreground Image field in *Slide → Image on Left → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slide.imageOnLeft.primary.foreground_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  foreground_image: prismic.ImageField<never>;
+}
+
+/**
+ * Image on Left variation for Slide Slice
+ *
+ * - **API ID**: `imageOnLeft`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SlideSliceImageOnLeft = prismic.SharedSliceVariation<
+  "imageOnLeft",
+  Simplify<SlideSliceImageOnLeftPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Slide*
+ */
+type SlideSliceVariation = SlideSliceDefault | SlideSliceImageOnLeft;
+
+/**
+ * Slide Shared Slice
+ *
+ * - **API ID**: `slide`
+ * - **Description**: Slide
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SlideSlice = prismic.SharedSlice<"slide", SlideSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -476,6 +646,12 @@ declare module "@prismicio/client" {
       ProductsGridSliceDefaultPrimary,
       ProductsGridSliceVariation,
       ProductsGridSliceDefault,
+      SlideSlice,
+      SlideSliceDefaultPrimary,
+      SlideSliceImageOnLeftPrimary,
+      SlideSliceVariation,
+      SlideSliceDefault,
+      SlideSliceImageOnLeft,
     };
   }
 }
