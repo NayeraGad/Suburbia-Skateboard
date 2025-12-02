@@ -10,6 +10,11 @@ import clsx from "clsx";
 
 import { ParallaxImage } from "./ParallaxImage";
 
+declare module "react" {
+  interface CSSProperties {
+    "--index"?: number;
+  }
+}
 /**
  * Props for `Slide`.
  */
@@ -18,7 +23,7 @@ export type SlideProps = SliceComponentProps<Content.SlideSlice>;
 /**
  * Component for "Slide" Slices.
  */
-const Slide: FC<SlideProps> = ({ slice }) => {
+const Slide: FC<SlideProps> = ({ slice, index }) => {
   const { theme, heading, body, button, image, foreground_image } =
     slice.primary;
 
@@ -27,13 +32,14 @@ const Slide: FC<SlideProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className={clsx(
-        "bg-texture text-white overflow-x-hidden",
+        "bg-texture sticky top-0 md:top-[calc(var(--index)*2rem)] text-white overflow-x-hidden",
 
         theme === "Blue" && "bg-brand-blue",
         theme === "Orange" && "bg-brand-orange",
         theme === "Navy" && "bg-brand-navy",
         theme === "Lime" && "bg-brand-lime text-black"
       )}
+      style={{ "--index": index }}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 md:gap-24">
         <div
