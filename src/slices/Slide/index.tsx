@@ -27,7 +27,7 @@ const Slide: FC<SlideProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className={clsx(
-        "bg-texture text-white",
+        "bg-texture text-white overflow-x-hidden",
 
         theme === "Blue" && "bg-brand-blue",
         theme === "Orange" && "bg-brand-orange",
