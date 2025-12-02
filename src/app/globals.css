@@ -73,4 +73,8 @@
     .parallax-images {
         @apply col-start-1 row-start-1 transition-transform
     }
+
+    .video-masks {
+        @apply absolute [mask-image:url(/video-mask.png)] [mask-position:center-center] [mask-size:100%_auto] [mask-mode:alpha] [mask-repeat:no-repeat]
+    }
 }
