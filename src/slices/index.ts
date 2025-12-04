@@ -6,5 +6,6 @@ export const components = {
   hero: dynamic(() => import("./Hero")),
   products_grid: dynamic(() => import("./ProductsGrid")),
   slide: dynamic(() => import("./Slide")),
+  team_section: dynamic(() => import("./TeamSection")),
   video_block: dynamic(() => import("./VideoBlock")),
 };

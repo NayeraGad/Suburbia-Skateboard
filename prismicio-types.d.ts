@@ -70,6 +70,7 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 type HomeDocumentDataSlicesSlice =
+  | TeamSectionSlice
   | VideoBlockSlice
   | SlideSlice
   | ProductsGridSlice
@@ -285,10 +286,87 @@ export type SkateboardDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for Skaters documents
+ */
+interface SkatersDocumentData {
+  /**
+   * First Name field in *Skaters*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skaters.first_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  first_name: prismic.KeyTextField;
+
+  /**
+   * Last Name field in *Skaters*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skaters.last_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  last_name: prismic.KeyTextField;
+
+  /**
+   * Background Photo field in *Skaters*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skaters.background_photo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_photo: prismic.ImageField<never>;
+
+  /**
+   * Foreground Photo field in *Skaters*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skaters.foreground_photo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  foreground_photo: prismic.ImageField<never>;
+
+  /**
+   * Button field in *Skaters*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skaters.button
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Skaters document from Prismic
+ *
+ * - **API ID**: `skaters`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SkatersDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<SkatersDocumentData>,
+    "skaters",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | HomeDocument
   | SettingsDocument
-  | SkateboardDocument;
+  | SkateboardDocument
+  | SkatersDocument;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -612,6 +690,51 @@ type SlideSliceVariation = SlideSliceDefault | SlideSliceImageOnLeft;
 export type SlideSlice = prismic.SharedSlice<"slide", SlideSliceVariation>;
 
 /**
+ * Primary content in *TeamSection → Default → Primary*
+ */
+export interface TeamSectionSliceDefaultPrimary {
+  /**
+   * The Team field in *TeamSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_section.default.primary.the_team
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  the_team: prismic.RichTextField;
+}
+
+/**
+ * Default variation for TeamSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TeamSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TeamSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TeamSection*
+ */
+type TeamSectionSliceVariation = TeamSectionSliceDefault;
+
+/**
+ * TeamSection Shared Slice
+ *
+ * - **API ID**: `team_section`
+ * - **Description**: TeamSection
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TeamSectionSlice = prismic.SharedSlice<
+  "team_section",
+  TeamSectionSliceVariation
+>;
+
+/**
  * Primary content in *VideoBlock → Default → Primary*
  */
 export interface VideoBlockSliceDefaultPrimary {
@@ -685,6 +808,8 @@ declare module "@prismicio/client" {
       SettingsDocumentDataNavigationItem,
       SkateboardDocument,
       SkateboardDocumentData,
+      SkatersDocument,
+      SkatersDocumentData,
       AllDocumentTypes,
       HeroSlice,
       HeroSliceDefaultPrimary,
@@ -701,6 +826,10 @@ declare module "@prismicio/client" {
       SlideSliceVariation,
       SlideSliceDefault,
       SlideSliceImageOnLeft,
+      TeamSectionSlice,
+      TeamSectionSliceDefaultPrimary,
+      TeamSectionSliceVariation,
+      TeamSectionSliceDefault,
       VideoBlockSlice,
       VideoBlockSliceDefaultPrimary,
       VideoBlockSliceVariation,

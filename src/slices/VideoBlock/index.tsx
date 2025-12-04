@@ -3,7 +3,6 @@ import { Content, isFilled } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { Bounded } from "@/components";
 import { LazyYouTubePlayer } from "./LazyYoutubePlayer";
-import clsx from "clsx";
 import Image from "next/image";
 
 /**
