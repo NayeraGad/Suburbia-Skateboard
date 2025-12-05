@@ -344,6 +344,17 @@ interface SkatersDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/link
    */
   button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Theme field in *Skaters*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skaters.theme
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  theme: prismic.SelectField<"Navy" | "Lime" | "Orange" | "Pink">;
 }
 
 /**

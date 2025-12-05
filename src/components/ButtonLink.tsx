@@ -36,7 +36,7 @@ export const ButtonLink = ({
         <>
           <div
             className={clsx(
-              "flex justify-center items-center transition-transform group-hover:-rotate-[25deg] [&>svg]:w-full [&>svg]:h-full",
+              "flex-center transition-transform group-hover:-rotate-[25deg] [&>svg]:w-full [&>svg]:h-full",
               size === "sm" && "size-5",
               size === "md" && "size-6",
               size === "lg" && "~size-6/8"

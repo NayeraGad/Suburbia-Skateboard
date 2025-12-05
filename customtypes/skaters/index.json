@@ -52,6 +52,14 @@
           "allowText": true,
           "repeat": false
         }
+      },
+      "theme": {
+        "type": "Select",
+        "config": {
+          "label": "Theme",
+          "placeholder": "",
+          "options": ["Navy", "Lime", "Orange", "Pink"]
+        }
       }
     }
   }

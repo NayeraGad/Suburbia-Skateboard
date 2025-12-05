@@ -21,7 +21,7 @@ export const Header = async () => {
           aria-label="main navbar"
           className="col-span-full row-start-2 md:col-span-1 md:col-start-2 md:row-start-1"
         >
-          <ul className="flex justify-center items-center flex-wrap gap-8">
+          <ul className="flex-center flex-wrap gap-8">
             {navigation.map(({ link }) => (
               <li key={link.text}>
                 <PrismicNextLink field={link} className="~text-lg/xl" />

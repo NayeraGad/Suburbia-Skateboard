@@ -3,8 +3,16 @@
 @tailwind utilities;
 
 @layer utilities {
+    .flex-center {
+        @apply flex justify-center items-center
+    }
+
     .product-grid-lines {
         @apply text-stone-300 stroke-2 transition-colors group-hover:text-stone-400
+    }
+
+    .team-image-transform {
+        @apply transform transition-all duration-1000 ease-in-out
     }
 }
 
@@ -76,5 +84,14 @@
 
     .video-masks {
         @apply absolute [mask-image:url(/video-mask.png)] [mask-position:center-center] [mask-size:100%_auto] [mask-mode:alpha] [mask-repeat:no-repeat]
+    }
+
+    .stack-layout {
+        @apply grid place-items-center;
+        grid-template-areas: 'stack';
+    }
+
+    .stack-layout>* {
+        grid-area: stack;
     }
 }

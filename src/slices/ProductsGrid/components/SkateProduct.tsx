@@ -53,7 +53,7 @@ export const SkateProduct = async ({ id }: SkateProductProps) => {
 
       <h3 className="my-2 ~text-lg/xl font-sans leading-tight">{name}</h3>
 
-      <div className="absolute inset-0 flex justify-center items-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+      <div className="absolute inset-0 flex-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
         <ButtonLink field={customizer_link}>Customize</ButtonLink>
       </div>
     </div>
